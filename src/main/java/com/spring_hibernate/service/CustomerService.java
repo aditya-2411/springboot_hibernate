@@ -49,6 +49,7 @@ public class CustomerService {
 	//update the customer
 	
 	public Customer updateCustomer(Customer cst, int id) {
+		Customer cst1=getCustomerById(id);
 		return customerrepository.save(cst);
 	}
 	
