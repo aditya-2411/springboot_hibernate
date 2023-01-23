@@ -1,16 +1,19 @@
 package com.spring_hibernate.data;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity 
 @Table(name="Customer_data")
 public class Customer {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="Customer_ID")
 	private int id;
 	
@@ -22,6 +25,9 @@ public class Customer {
 	
 	@Column(name="Customer_email")
 	private String email;
+	 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Profession job;
 	
 	public Customer(int id, String name, String city, String email) {
 		super();
@@ -31,6 +37,23 @@ public class Customer {
 		this.email = email;
 	}
 	
+	public Profession getJob() {
+		return job;
+	}
+
+	public void setJob(Profession job) {
+		this.job = job;
+	}
+
+	public Customer(int id, String name, String city, String email, Profession job) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.email = email;
+		this.job = job;
+	}
+
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub

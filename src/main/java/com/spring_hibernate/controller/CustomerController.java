@@ -1,7 +1,5 @@
 package com.spring_hibernate.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +20,14 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerservice;
 	
-	@GetMapping("/customers")
+	@GetMapping("/Customers")
 	public ResponseEntity<java.util.List<Customer>> getCustomers(){
 		java.util.List<Customer> list=customerservice.getAllCustomers();
 		
 		if(list.size()<=0) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.of(Optional.of(list));
+		return ResponseEntity.ok(list);
 	}
 	
 	@GetMapping("/Customers/{id}")
@@ -42,22 +40,42 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/Customers")
-	public Customer addCustomer(@RequestBody Customer cst) {
-		Customer cst1=customerservice.addCustomer(cst);
-		return cst1;
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer cst) {
+		try {
+			Customer cst1=customerservice.addCustomer(cst);
+			return ResponseEntity.ok(cst1);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
 	}
 	
 	
 	@DeleteMapping("/Customers/{id}")
-	public void deleteCustomer(@PathVariable("id") int id) {
-		customerservice.deleteCustomer(id);
+	public ResponseEntity <Void> deleteCustomer(@PathVariable("id") int id) {
+		try{
+			customerservice.deleteCustomer(id);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
 	}
 	
 	
 	@PutMapping("/Customers/{id}")
-	public Customer updateCustomer(@RequestBody Customer cst,@PathVariable("id") int id) {
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer cst,@PathVariable("id") int id) {
+		try {
+			Customer cst1=customerservice.updateCustomer(cst, id);
+			return ResponseEntity.ok(cst1);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
 		
-		return customerservice.updateCustomer(cst, id);
 	}
 
 }

@@ -1,8 +1,6 @@
 package com.spring_hibernate.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,7 +47,7 @@ public class CustomerService {
 	//update the customer
 	
 	public Customer updateCustomer(Customer cst, int id) {
-		Customer cst1=getCustomerById(id);
+		cst.setId(id);
 		return customerrepository.save(cst);
 	}
 	
