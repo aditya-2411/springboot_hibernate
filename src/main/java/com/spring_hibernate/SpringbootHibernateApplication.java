@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.spring_hibernate.data.Customer;
-import com.spring_hibernate.repository.CustomerRepository;
+import com.spring_hibernate.data.Employee;
+import com.spring_hibernate.repository.EmployeeRepository;
 
 @SpringBootApplication
 public class SpringbootHibernateApplication {
@@ -14,63 +14,63 @@ public class SpringbootHibernateApplication {
 		ConfigurableApplicationContext context=SpringApplication.run(SpringbootHibernateApplication.class, args);
 		
 		
-		CustomerRepository customerrepository=context.getBean(CustomerRepository.class);
+		EmployeeRepository employeerepository=context.getBean(EmployeeRepository.class);
 		
-		//create new customer object
-//		Customer cst= new Customer();
+		//create new employee object
+//		Employee cst= new Employee();
 //		
 //		//set the data 
 //		cst.setName("Aditya");
 //		cst.setCity("sikar");
 //		cst.setEmail("aditya@gmail.com");
 //		
-//		// save the customer object, changes can be observed in database
-//		//save method for single customer and it returns the customer object which is saved
-//		Customer result1=customerrepository.save(cst);
+//		// save the employee object, changes can be observed in database
+//		//save method for single employee and it returns the employee object which is saved
+//		Employee result1=employeerepository.save(cst);
 //		
 //		System.out.println(result1);
-//	
 	
-//		// create two more customers object
-//		Customer cst3 = new Customer();
+	
+//		// create two more employees object
+//		Employee cst3 = new Employee();
 //		cst3.setName("Rahul");
 //		cst3.setCity("Delhi");
 //		cst3.setEmail("rahul@gmail.com");
 //		
 //
-//		Customer cst4 = new Customer();
+//		Employee cst4 = new Employee();
 //		cst4.setName("Rohit");
 //		cst4.setCity("mumbai");
 //		cst4.setEmail("rohit@gmail.com");
 //		
 //		// add them to a list
-//		List<Customer> list1=List.of(cst3,cst4);
+//		List<Employee> list1=List.of(cst3,cst4);
 //		//old method to add elements to list
-//		//List<Customer> list1=new ArrayList<Customer>();
+//		//List<Employee> list1=new ArrayList<Employee>();
 //		//Collections.addAll(list1,cst3,cst4);
 //		
-//		// saveall method to save multiple customers at a time and this will return a list
-//		Iterable<Customer> result2=customerrepository.saveAll(list1);
+//		// saveall method to save multiple employees at a time and this will return a list
+//		Iterable<Employee> result2=employeerepository.saveAll(list1);
 //		
-//		// for each loop using lambda to print all the customers in result2
+//		// for each loop using lambda to print all the employees in result2
 //		result2.forEach(x->{
 //			System.out.println(x);
 //		});
 //		
 //		// update any data to existing data
-//		//update the city of customer whose id is 152
+//		//update the city of employee whose id is 152
 //		
 //		//findById method used, returns optional type of object
-//		Optional<Customer> optional= customerrepository.findById(152);
+//		Optional<Employee> optional= employeerepository.findById(152);
 //		
 //		//using get method
-//		Customer cst5=optional.get();
+//		Employee cst5=optional.get();
 //		
 //		//update the city
 //		cst5.setCity("Jaipur");
 //		
-//		//save the customer and the city name will be updated
-//		Customer res=customerrepository.save(cst5);
+//		//save the employee and the city name will be updated
+//		Employee res=employeerepository.save(cst5);
 //		System.out.println(res);
 //		
 //		
@@ -78,19 +78,19 @@ public class SpringbootHibernateApplication {
 //		//findById(id)  - returns Optional containing your data
 //		
 //		//findAll()  - returns all instances of the type
-//		Iterable<Customer> itr=customerrepository.findAll();
+//		Iterable<Employee> itr=employeerepository.findAll();
 //		itr.forEach(x->{
 //			System.out.println(x);
 //		});
 //		
 //		// how to delete the data
 //		//deleteById(id) - deletes the data of cutomer whose id we provide
-//		customerrepository.deleteById(153);
+//		employeerepository.deleteById(153);
 //		
-//		//deleteAll(list1) - deletes all the data of the customers which are in list1
+//		//deleteAll(list1) - deletes all the data of the employees which are in list1
 //		
-//		Iterable<Customer> list2=customerrepository.findAll();
-//		customerrepository.deleteAll(list2);
+//		Iterable<Employee> list2=employeerepository.findAll();
+//		employeerepository.deleteAll(list2);
 		
 		
 		

@@ -10,32 +10,26 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity 
-@Table(name="Customer_data")
-public class Customer {
+@Table(name="Employee_data")
+public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="Customer_ID")
+	@Column(name="Employee_ID")
 	private int id;
 	
-	@Column(name="Customer_name")
+	@Column(name="Employee_name")
 	private String name;
 	
-	@Column(name="Customer_city")
+	@Column(name="Employee_city")
 	private String city;
 	
-	@Column(name="Customer_email")
+	@Column(name="Employee_email")
 	private String email;
 	 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Profession job;
 	
-	public Customer(int id, String name, String city, String email) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.city = city;
-		this.email = email;
-	}
+	
 	
 	public Profession getJob() {
 		return job;
@@ -45,7 +39,7 @@ public class Customer {
 		this.job = job;
 	}
 
-	public Customer(int id, String name, String city, String email, Profession job) {
+	public Employee(int id, String name, String city, String email, Profession job) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,14 +48,14 @@ public class Customer {
 		this.job = job;
 	}
 
-	public Customer() {
+	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", city=" + city + ", email=" + email + "]";
+		return "Employee [id=" + id + ", name=" + name + ", city=" + city + ", email=" + email + "]";
 	}
 	
 	public int getId() {

@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring_hibernate.data.Customer;
-import com.spring_hibernate.service.CustomerService;
+import com.spring_hibernate.data.Employee;
+import com.spring_hibernate.service.EmployeeService;
 
 @RestController
-public class CustomerController {
+public class EmployeeController {
 	
 	@Autowired
-	private CustomerService customerservice;
+	private EmployeeService employeeservice;
 	
-	@GetMapping("/Customers")
-	public ResponseEntity<java.util.List<Customer>> getCustomers(){
-		java.util.List<Customer> list=customerservice.getAllCustomers();
+	@GetMapping("/Employees")
+	public ResponseEntity<java.util.List<Employee>> getEmployees(){
+		java.util.List<Employee> list=employeeservice.getAllEmployees();
 		
 		if(list.size()<=0) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -30,19 +30,19 @@ public class CustomerController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping("/Customers/{id}")
-	public ResponseEntity<Customer> getCustomer(@PathVariable("id") int id) {
-		Customer cst= customerservice.getCustomerById(id);
+	@GetMapping("/Employees/{id}")
+	public ResponseEntity<Employee> getEmployee(@PathVariable("id") int id) {
+		Employee cst= employeeservice.getEmployeeById(id);
 		if(cst==null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 		return ResponseEntity.ok(cst);
 	}
 	
-	@PostMapping("/Customers")
-	public ResponseEntity<Customer> addCustomer(@RequestBody Customer cst) {
+	@PostMapping("/Employees")
+	public ResponseEntity<Employee> addEmployee(@RequestBody Employee cst) {
 		try {
-			Customer cst1=customerservice.addCustomer(cst);
+			Employee cst1=employeeservice.addEmployee(cst);
 			return ResponseEntity.ok(cst1);
 		}
 		catch (Exception e){
@@ -52,10 +52,10 @@ public class CustomerController {
 	}
 	
 	
-	@DeleteMapping("/Customers/{id}")
-	public ResponseEntity <Void> deleteCustomer(@PathVariable("id") int id) {
+	@DeleteMapping("/Employees/{id}")
+	public ResponseEntity <Void> deleteEmployee(@PathVariable("id") int id) {
 		try{
-			customerservice.deleteCustomer(id);
+			employeeservice.deleteEmployee(id);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		}
 		catch(Exception e){
@@ -65,10 +65,10 @@ public class CustomerController {
 	}
 	
 	
-	@PutMapping("/Customers/{id}")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer cst,@PathVariable("id") int id) {
+	@PutMapping("/Employees/{id}")
+	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee cst,@PathVariable("id") int id) {
 		try {
-			Customer cst1=customerservice.updateCustomer(cst, id);
+			Employee cst1=employeeservice.updateEmployee(cst, id);
 			return ResponseEntity.ok(cst1);
 		}
 		catch(Exception e) {
