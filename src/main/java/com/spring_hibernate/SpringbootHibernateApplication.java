@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.spring_hibernate.data.Employee;
 import com.spring_hibernate.repository.EmployeeRepository;
 
 @SpringBootApplication

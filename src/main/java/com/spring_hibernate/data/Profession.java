@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Profession {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int jobid;
 	private String jobprofile;
 	
